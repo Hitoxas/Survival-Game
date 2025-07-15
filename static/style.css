@@ -1,0 +1,28 @@
+body {
+    background-color: #1e1e1e;
+    color: #eee;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #388e3c;
+}
+
+#inventory, #crafting {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+}
