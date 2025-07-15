@@ -42,14 +42,28 @@ function updateCraftingMenu() {
                     .map(([key, val]) => `${key}: ${val}`)
                     .join(', ');
 
+                const disabled = item.available ? '' : 'disabled';
+
                 html += `<li>
-                    ${item.name} (${costText}) -
-                    ${item.available ? '✅ Available' : '❌ Not enough resources'}
+                    <button onclick="craftItem('${item.id}')" ${disabled}>${item.name}</button>
+                    <span> (${costText})</span>
                 </li>`;
             });
             html += '</ul>';
             craftingDiv.innerHTML = html;
         });
+}
+
+function craftItem(endpoint) {
+    fetch(`/${endpoint}`, {
+        method: 'POST'
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('output').innerText = data.message;
+        if (inventoryVisible) updateInventory();
+        if (craftingVisible) updateCraftingMenu();
+    });
 }
 
 let craftingVisible = false;
@@ -104,7 +118,7 @@ function collectStick() {
         });
 }
 
-// Crafting functions
+// Crafting specific item functions
 
 function craftRope() {
     fetch('/craft_rope', {

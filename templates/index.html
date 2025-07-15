@@ -8,16 +8,24 @@
 </head>
 <body>
     <h1>Survival Game</h1>
-    <button onclick="collectFiber()">Collect Plant Fiber</button><br><br>
-    <button onclick="collectStick()">Collect Sticks</button><br><br>
-    <button onclick="collectStone()">Collect Stones</button><br><br>
-    <button onclick="craftRope()">Craft Rope (-10 Plant Fiber)</button><br><br>
-    <button onclick="craftWoodenHandle()">Craft Wooden Handle (-4 Sticks, -2 Rope)</button><br><br>
-    <button onclick="toggleInventory()">Show/Hide Inventory</button>
-    <div id="inventory" style="display: none;"></div>
-    <button onclick="toggleCrafting()">Toggle Crafting Menu</button>
-    <div id="crafting" style="display: none;"></div>
-    <p id="output"></p>
+    <hr>
+    <p id="output">Choose what you want to do!</p>
+    <hr>
+    <h3>Resource Gathering</h3>
+    <div class="section">
+        <button onclick="collectFiber()">Collect Plant Fiber</button>
+        <button onclick="collectStick()">Collect Sticks</button>
+        <button onclick="collectStone()">Collect Stones</button>
+    </div>
+    <hr>
+    <div class="section">
+        <button onclick="toggleInventory()">Show/Hide Inventory</button>
+        <div id="inventory" style="display: none;"></div>
+        <button onclick="toggleCrafting()">Crafting Menu</button>
+        <div id="crafting" style="display: none;"></div>
+    </div>
+    <hr>
+
 
     <script src="{{ url_for('static', filename='game.js') }}"></script>
 </body>

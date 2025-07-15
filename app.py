@@ -36,11 +36,13 @@ def toggle_crafting_menu():
     player = Player.query.first()
     crafting_options = [
         {
-            'name': 'Craft Rope',
+            'id': 'craft_rope',
+            'name': 'Rope',
             'cost': {'Plant Fiber': 10},
             'available': player.fiber >= 10},
         {
-            'name': 'Craft Wooden Handle',
+            'id': 'craft_wooden_handle',
+            'name': 'Wooden Handle',
             'cost': {'Sticks': 4, 'Rope': 2},
             'available': player.sticks >= 4 and player.rope >= 2
         }
