@@ -36,7 +36,7 @@ function updateCraftingMenu() {
     fetch('/crafting')
         .then(res => res.json())
         .then(data => {
-            let html = '<h3>Crafting Menu</h3><ul>';
+            let html = '<h3>Crafting Menu:</h3><ul>';
             data.forEach(item => {
                 const costText = Object.entries(item.cost)
                     .map(([key, val]) => `${key}: ${val}`)

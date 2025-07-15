@@ -3,6 +3,7 @@ body {
     color: #eee;
     font-family: 'Segoe UI', sans-serif;
     margin: 20px;
+    width: 500px;
 }
 
 button {
@@ -22,12 +23,17 @@ hr {
     width: 100%;
 }
 
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
 button:hover {
     background-color: #388e3c;
 }
 
 #inventory, #crafting {
-    width: 50%;
+    width: 80%;
     height: 100%;
     margin-top: 20px;
     padding: 10px;
