@@ -35,27 +35,38 @@
 
         //Crafting Menu functionality
 
+        function updateCraftingMenu() {
+            const craftingDiv = document.getElementById('crafting');
+
+            fetch('/crafting')
+                .then(res => res.json())
+                .then(data => {
+                    let html = '<h3>Crafting Menu</h3><ul>';
+                    data.forEach(item => {
+                        const costText = Object.entries(item.cost)
+                            .map(([key, val]) => `${key}: ${val}`)
+                            .join(', ');
+
+                        html += `<li>
+                            ${item.name} (${costText}) -
+                            ${item.available ? '✅ Available' : '❌ Not enough resources'}
+                        </li>`;
+                    });
+                    html += '</ul>';
+                    craftingDiv.innerHTML = html;
+                });
+        }
+
         let craftingVisible = false;
 
         function toggleCrafting() {
             const craftingDiv = document.getElementById('crafting');
-            craftingVisible = !craftingVisible;
+            craftingVisible = !craftingVisible
 
             if (craftingVisible) {
-                fetch('/crafting')
-                    .then(res => res.json())
-                    .then(data => {
-                        let html = '<h3>Crafting Menu</h3><ul>';
-                        data.forEach(item => {
-                            let costStr = Object.entries(item.cost)
-                                .map(([key, val]) => `${key}: ${val}`)
-                                .join(', ');
-                            html += `<li>${item.name} (${costStr}) - ${item.available ? '✅ Available' : '❌ Not enough resources'}</li>`;
-                        });
-                        html += '</ul>';
-                        craftingDiv.innerHTML = html;
-                        craftingDiv.style.display = 'block';
-                    });
+                craftingDiv.style.display = 'block';
+                updateCraftingMenu();
+
             } else {
                 craftingDiv.style.display = 'none';
             }
@@ -72,6 +83,7 @@
                 .then(data => {
                     document.getElementById('output').innerText = data.message;
                     if (inventoryVisible) updateInventory();
+                    if (craftingVisible) updateCraftingMenu();
                 });
         }
         function collectStick() {
@@ -82,6 +94,7 @@
                 .then(data => {
                     document.getElementById('output').innerText = data.message;
                     if (inventoryVisible) updateInventory();
+                    if (craftingVisible) updateCraftingMenu();
                 });
         }
          function collectStone() {
@@ -92,6 +105,7 @@
                 .then(data => {
                     document.getElementById('output').innerText = data.message;
                     if (inventoryVisible) updateInventory();
+                    if (craftingVisible) updateCraftingMenu();
                 });
         }
 
@@ -105,6 +119,7 @@
                 .then(data => {
                     document.getElementById('output').innerText = data.message;
                     if (inventoryVisible) updateInventory();
+                    if (craftingVisible) updateCraftingMenu();
                 });
         }
 
@@ -116,6 +131,7 @@
                 .then(data => {
                     document.getElementById('output').innerText = data.message;
                     if (inventoryVisible) updateInventory();
+                    if (craftingVisible) updateCraftingMenu();
                 });
         }
 
